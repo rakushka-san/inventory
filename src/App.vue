@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import AppFrame from './components/AppFrame.vue'
+import AppNotification from './components/AppNotification.vue'
 </script>
 
 <template>
 	<main>
 		<div class="container">
 			<AppFrame class="frame" />
+			<AppNotification class="notification" />
 		</div>
 	</main>
 </template>
@@ -22,5 +24,10 @@ import AppFrame from './components/AppFrame.vue'
 
 .frame {
 	width: 100%;
+}
+
+.notification {
+	grid-column: 1 / span 2;
+	grid-row: 2 / 3;
 }
 </style>
