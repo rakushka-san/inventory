@@ -34,8 +34,8 @@ defineProps<Props>()
 	align-items: center;
 	background-color: $colorSecondaryBackground;
 
-	&_selected {
-		background-color: $colorPrimaryWhite;
+	&_hovered {
+		background-color: $colorHoverBackground;
 	}
 
 	&_filled {

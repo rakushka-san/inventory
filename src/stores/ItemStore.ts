@@ -42,6 +42,7 @@ export const useItemStore = defineStore('itemStore', () => {
 	const error = ref<string | undefined>()
 	const draggableIndex = ref<number | undefined>()
 	const droppedIndex = ref<number | undefined>()
+	const hoveredIndex = ref<number | undefined>()
 
 	const swapItems = () => {
 		if (
@@ -86,6 +87,7 @@ export const useItemStore = defineStore('itemStore', () => {
 		error,
 		draggableIndex,
 		droppedIndex,
+		hoveredIndex,
 		chooseItem,
 		emptyChosenItem,
 		remove,

@@ -15,8 +15,9 @@ function dragStart(index: number) {
 	itemStore.draggableIndex = index
 }
 
-function dragOver(event: Event) {
+function dragOver(event: Event, index: number) {
 	event.preventDefault()
+	itemStore.hoveredIndex = index
 }
 
 function drop(event: Event, index: number) {
@@ -34,9 +35,10 @@ function drop(event: Event, index: number) {
 				:item="item"
 				:draggable="item"
 				@dragstart="dragStart(index)"
-				@dragover="dragOver"
+				@dragover="dragOver($event, index)"
 				@drop="drop($event, index)"
 				@click="chooseItem(index)"
+				:class="{ 'inventory-cell_hovered': index === itemStore.hoveredIndex }"
 			></InventoryCell>
 		</div>
 
