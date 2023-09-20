@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import type { IItem } from '../models/Item'
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 
 const defaultItems: IItem[] = []
 defaultItems.length = 25
@@ -22,6 +22,20 @@ defaultItems[2] = {
 
 export const useItemStore = defineStore('itemStore', () => {
 	const items = ref(defaultItems)
+
+	const itemsInLocalStorage = localStorage.getItem('items')
+	if (itemsInLocalStorage) {
+		items.value = JSON.parse(itemsInLocalStorage)._value
+	}
+
+	watch(
+		() => items,
+		state => {
+			localStorage.setItem('items', JSON.stringify(state))
+		},
+		{ deep: true }
+	)
+
 	const chosenItem = ref<IItem | undefined>()
 	const isGoingToRemove = ref(false)
 	const amountToDelete = ref<number | undefined>()
