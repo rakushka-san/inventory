@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import AppClose from './AppClose.vue'
+import AppModal from './AppModal.vue'
+import InventoryAmount from './InventoryAmount.vue'
 </script>
 
 <template>
@@ -22,6 +24,10 @@ import AppClose from './AppClose.vue'
 		<button class="inventory-item__button button button_danger">
 			Удалить предмет
 		</button>
+
+		<AppModal class="inventory-item__modal">
+			<InventoryAmount />
+		</AppModal>
 	</div>
 </template>
 
@@ -75,6 +81,14 @@ import AppClose from './AppClose.vue'
 		margin-top: 1.125rem;
 		width: 100%;
 		padding: 0.69rem 0;
+	}
+
+	&__modal {
+		left: 0;
+		right: 0;
+		bottom: 0;
+
+		border-top: 1px solid $colorPrimaryBorder;
 	}
 }
 </style>

@@ -33,7 +33,7 @@ import InventoryItem from './InventoryItem.vue'
 			<InventoryCell></InventoryCell>
 			<InventoryCell></InventoryCell>
 		</div>
-		<AppModal class="modal"><InventoryItem /></AppModal>
+		<AppModal class="inventory__modal"><InventoryItem /></AppModal>
 	</div>
 </template>
 
@@ -60,10 +60,12 @@ import InventoryItem from './InventoryItem.vue'
 		gap: 1px;
 	}
 
-	& .modal {
+	&__modal {
 		top: 0;
 		right: 0;
 		bottom: 0;
+
+		border-left: 1px solid $colorPrimaryBorder;
 	}
 }
 </style>

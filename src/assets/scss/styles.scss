@@ -39,3 +39,24 @@ body {
 		}
 	}
 }
+
+.input {
+	padding: 0.75rem;
+
+	width: 100%;
+
+	background-color: transparent;
+
+	border-radius: 0.25rem;
+	border: 1px solid $colorPrimaryBorder;
+
+	font-family: 'Inter';
+	font-weight: 500;
+	font-size: 0.875rem;
+
+	color: $colorPrimaryWhite;
+
+	&::placeholder {
+		color: rgba($colorPrimaryWhite, 0.4);
+	}
+}
