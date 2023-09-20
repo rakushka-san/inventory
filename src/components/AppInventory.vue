@@ -7,10 +7,21 @@ import { useItemStore } from './../stores/ItemStore'
 import type { IItem } from '@/models/Item'
 const itemStore = useItemStore()
 
-function chooseItem(item: IItem | undefined) {
-	if (item) {
-		itemStore.chooseItem(item.id)
-	}
+function chooseItem(index: number) {
+	itemStore.chooseItem(index)
+}
+
+function dragStart(index: number) {
+	itemStore.draggableIndex = index
+}
+
+function dragOver(event: Event) {
+	event.preventDefault()
+}
+
+function drop(event: Event, index: number) {
+	itemStore.droppedIndex = index
+	itemStore.swapItems()
 }
 </script>
 
@@ -21,7 +32,11 @@ function chooseItem(item: IItem | undefined) {
 				v-for="(item, index) in itemStore.items"
 				:key="index"
 				:item="item"
-				@click="chooseItem(item)"
+				:draggable="item"
+				@dragstart="dragStart(index)"
+				@dragover="dragOver"
+				@drop="drop($event, index)"
+				@click="chooseItem(index)"
 			></InventoryCell>
 		</div>
 

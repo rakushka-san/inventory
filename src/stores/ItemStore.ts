@@ -26,11 +26,28 @@ export const useItemStore = defineStore('itemStore', () => {
 	const isGoingToRemove = ref(false)
 	const amountToDelete = ref<number | undefined>()
 	const error = ref<string | undefined>()
+	const draggableIndex = ref<number | undefined>()
+	const droppedIndex = ref<number | undefined>()
 
-	const chooseItem = (id: number) => {
-		emptyChosenItem()
-		const index = items.value.findIndex(item => item.id === id)
-		chosenItem.value = items.value[index]
+	const swapItems = () => {
+		if (
+			draggableIndex.value !== undefined &&
+			droppedIndex.value !== undefined
+		) {
+			const tempItem = items.value[draggableIndex.value]
+			items.value[draggableIndex.value] = items.value[droppedIndex.value]
+			items.value[droppedIndex.value] = tempItem
+		}
+
+		draggableIndex.value = undefined
+		droppedIndex.value = undefined
+	}
+
+	const chooseItem = (index: number) => {
+		if (items.value[index]) {
+			emptyChosenItem()
+			chosenItem.value = items.value[index]
+		}
 	}
 
 	const emptyChosenItem = () => {
@@ -53,8 +70,11 @@ export const useItemStore = defineStore('itemStore', () => {
 		isGoingToRemove,
 		amountToDelete,
 		error,
+		draggableIndex,
+		droppedIndex,
 		chooseItem,
 		emptyChosenItem,
 		remove,
+		swapItems,
 	}
 })
