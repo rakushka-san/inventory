@@ -1,0 +1,40 @@
+.fade-leave-active {
+	transition: opacity 0.5s;
+}
+.fade-leave-to {
+	opacity: 0;
+}
+
+.slide-x-enter-active {
+	animation: slide-x 0.5s;
+}
+
+.slide-x-leave-active {
+	animation: slide-x 0.5s reverse;
+}
+
+@keyframes slide-x {
+	0% {
+		transform: translateX(32rem);
+	}
+	100% {
+		transform: translateX(0);
+	}
+}
+
+.slide-y-enter-active {
+	animation: slide-y 0.5s;
+}
+
+.slide-y-leave-active {
+	animation: slide-y 0.5s reverse;
+}
+
+@keyframes slide-y {
+	0% {
+		transform: translateY(9rem);
+	}
+	100% {
+		transform: translateY(0);
+	}
+}

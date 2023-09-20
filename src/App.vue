@@ -12,10 +12,12 @@ const notificationStore = useNotificationStore()
 		<div class="container">
 			<AppFrame />
 			<AppInventory />
-			<AppNotification
-				v-if="notificationStore.isNotificationVisible"
-				class="notification"
-			/>
+			<Transition name="fade">
+				<AppNotification
+					v-if="notificationStore.isNotificationVisible"
+					class="notification"
+				/>
+			</Transition>
 		</div>
 	</main>
 </template>

@@ -33,9 +33,14 @@ const itemStore = useItemStore()
 			Удалить предмет
 		</button>
 
-		<AppModal v-show="itemStore.isGoingToRemove" class="inventory-item__modal">
-			<InventoryAmount />
-		</AppModal>
+		<Transition name="slide-y">
+			<AppModal
+				v-show="itemStore.isGoingToRemove"
+				class="inventory-item__modal"
+			>
+				<InventoryAmount />
+			</AppModal>
+		</Transition>
 	</div>
 </template>
 

@@ -24,9 +24,12 @@ function chooseItem(item: IItem | undefined) {
 				@click="chooseItem(item)"
 			></InventoryCell>
 		</div>
-		<AppModal v-show="itemStore.chosenItem" class="inventory__modal"
-			><InventoryItem
-		/></AppModal>
+
+		<Transition name="slide-x">
+			<AppModal v-if="itemStore.chosenItem" class="inventory__modal">
+				<InventoryItem />
+			</AppModal>
+		</Transition>
 	</div>
 </template>
 
