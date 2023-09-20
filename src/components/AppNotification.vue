@@ -1,11 +1,11 @@
+<script setup lang="ts">
+import AppClose from './AppClose.vue'
+</script>
+
 <template>
 	<div class="notification">
 		<div class="notification__text"></div>
-		<img
-			src="./../assets/img/carbon_close.svg"
-			alt="Close Button"
-			class="notification__close"
-		/>
+		<AppClose />
 	</div>
 </template>
 
@@ -28,12 +28,6 @@
 
 		background: $gradientSkeleton;
 		border-radius: 0.75rem;
-	}
-
-	&__close {
-		position: absolute;
-		top: 0.5rem;
-		right: 0.5rem;
 	}
 }
 </style>
