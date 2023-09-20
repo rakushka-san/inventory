@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import InventoryCell from './InventoryCell.vue'
+import AppModal from './AppModal.vue'
+import InventoryItem from './InventoryItem.vue'
 </script>
 
 <template>
@@ -31,6 +33,7 @@ import InventoryCell from './InventoryCell.vue'
 			<InventoryCell></InventoryCell>
 			<InventoryCell></InventoryCell>
 		</div>
+		<AppModal class="modal"><InventoryItem /></AppModal>
 	</div>
 </template>
 
@@ -55,6 +58,12 @@ import InventoryCell from './InventoryCell.vue'
 		grid-template-columns: repeat(5, 1fr);
 		grid-template-rows: repeat(5, 1fr);
 		gap: 1px;
+	}
+
+	& .modal {
+		top: 0;
+		right: 0;
+		bottom: 0;
 	}
 }
 </style>

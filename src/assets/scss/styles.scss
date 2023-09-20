@@ -18,3 +18,24 @@ body {
 	font-family: 'SF Pro Display';
 	color: $colorPrimaryWhite;
 }
+
+.button {
+	border-radius: 0.5rem;
+	border: none;
+
+	font-size: 0.875rem;
+
+	&_normal {
+		background-color: $colorPrimaryWhite;
+		color: $colorPrimaryBlack;
+	}
+
+	&_danger {
+		background-color: $colorPrimaryRed;
+		color: $colorPrimaryWhite;
+
+		&:hover {
+			background-color: $colorRedHover;
+		}
+	}
+}
