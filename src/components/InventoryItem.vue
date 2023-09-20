@@ -1,14 +1,19 @@
 <script setup lang="ts">
+import { useItemStore } from '@/stores/ItemStore'
 import AppClose from './AppClose.vue'
 import AppModal from './AppModal.vue'
 import InventoryAmount from './InventoryAmount.vue'
+
+import { getImageUrl } from '@/helpers/getImageUrl'
+
+const itemStore = useItemStore()
 </script>
 
 <template>
 	<div class="inventory-item">
-		<AppClose />
+		<AppClose @click="itemStore.emptyChosenItem()" />
 		<img
-			src="./../assets/img/Item Image.svg"
+			:src="getImageUrl(itemStore.chosenItem?.imgSrc)"
 			alt="Item Image"
 			class="inventory-item__image"
 		/>
@@ -21,11 +26,14 @@ import InventoryAmount from './InventoryAmount.vue'
 			<div class="inventory-item__line"></div>
 		</div>
 
-		<button class="inventory-item__button button button_danger">
+		<button
+			class="inventory-item__button button button_danger"
+			@click="itemStore.isGoingToRemove = true"
+		>
 			Удалить предмет
 		</button>
 
-		<AppModal class="inventory-item__modal">
+		<AppModal v-show="itemStore.isGoingToRemove" class="inventory-item__modal">
 			<InventoryAmount />
 		</AppModal>
 	</div>

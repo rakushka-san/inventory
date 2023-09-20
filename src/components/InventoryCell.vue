@@ -1,12 +1,24 @@
+<script setup lang="ts">
+import type { IItem } from '@/models/Item'
+import { getImageUrl } from '@/helpers/getImageUrl'
+
+interface Props {
+	item: IItem | undefined
+}
+
+defineProps<Props>()
+</script>
+
 <template>
-	<div class="inventory-cell">
+	<div class="inventory-cell" :class="{ 'inventory-cell_filled': item }">
 		<img
-			src="./../assets/img/Item Image.svg"
+			v-if="item"
+			:src="getImageUrl(item.imgSrc)"
 			alt="Item Image"
 			class="inventory-cell__image"
 		/>
-		<div class="inventory-cell__amount-block">
-			<p class="inventory-cell__amount">4</p>
+		<div v-if="item" class="inventory-cell__amount-block">
+			<p class="inventory-cell__amount">{{ item.amount }}</p>
 		</div>
 	</div>
 </template>
@@ -21,10 +33,12 @@
 	justify-content: center;
 	align-items: center;
 	background-color: $colorSecondaryBackground;
-	cursor: pointer;
 
-	&:hover {
-		background-color: $colorHoverBackground;
+	&_filled {
+		cursor: pointer;
+		&:hover {
+			background-color: $colorHoverBackground;
+		}
 	}
 
 	&__image {

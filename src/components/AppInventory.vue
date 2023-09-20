@@ -2,38 +2,31 @@
 import InventoryCell from './InventoryCell.vue'
 import AppModal from './AppModal.vue'
 import InventoryItem from './InventoryItem.vue'
+
+import { useItemStore } from './../stores/ItemStore'
+import type { IItem } from '@/models/Item'
+const itemStore = useItemStore()
+
+function chooseItem(item: IItem | undefined) {
+	if (item) {
+		itemStore.chooseItem(item.id)
+	}
+}
 </script>
 
 <template>
 	<div class="inventory">
 		<div class="inventory__grid">
-			<InventoryCell></InventoryCell>
-			<InventoryCell></InventoryCell>
-			<InventoryCell></InventoryCell>
-			<InventoryCell></InventoryCell>
-			<InventoryCell></InventoryCell>
-			<InventoryCell></InventoryCell>
-			<InventoryCell></InventoryCell>
-			<InventoryCell></InventoryCell>
-			<InventoryCell></InventoryCell>
-			<InventoryCell></InventoryCell>
-			<InventoryCell></InventoryCell>
-			<InventoryCell></InventoryCell>
-			<InventoryCell></InventoryCell>
-			<InventoryCell></InventoryCell>
-			<InventoryCell></InventoryCell>
-			<InventoryCell></InventoryCell>
-			<InventoryCell></InventoryCell>
-			<InventoryCell></InventoryCell>
-			<InventoryCell></InventoryCell>
-			<InventoryCell></InventoryCell>
-			<InventoryCell></InventoryCell>
-			<InventoryCell></InventoryCell>
-			<InventoryCell></InventoryCell>
-			<InventoryCell></InventoryCell>
-			<InventoryCell></InventoryCell>
+			<InventoryCell
+				v-for="(item, index) in itemStore.items"
+				:key="index"
+				:item="item"
+				@click="chooseItem(item)"
+			></InventoryCell>
 		</div>
-		<AppModal class="inventory__modal"><InventoryItem /></AppModal>
+		<AppModal v-show="itemStore.chosenItem" class="inventory__modal"
+			><InventoryItem
+		/></AppModal>
 	</div>
 </template>
 
