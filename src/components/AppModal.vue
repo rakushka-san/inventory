@@ -10,7 +10,6 @@
 .modal {
 	position: absolute;
 
-	border-left: 1px solid $colorPrimaryBorder;
 	background-color: rgba($colorSecondaryBackground, 0.9);
 	backdrop-filter: blur(8px);
 }
