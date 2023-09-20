@@ -1,11 +1,14 @@
 <script setup lang="ts">
+import { useNotificationStore } from '@/stores/NotificationStore'
 import AppClose from './AppClose.vue'
+
+const notificationStore = useNotificationStore()
 </script>
 
 <template>
 	<div class="notification">
 		<div class="notification__text"></div>
-		<AppClose />
+		<AppClose @click="notificationStore.closeNotification" />
 	</div>
 </template>
 

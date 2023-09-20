@@ -2,6 +2,9 @@
 import AppFrame from './components/AppFrame.vue'
 import AppInventory from './components/AppInventory.vue'
 import AppNotification from './components/AppNotification.vue'
+import { useNotificationStore } from './stores/NotificationStore'
+
+const notificationStore = useNotificationStore()
 </script>
 
 <template>
@@ -9,7 +12,10 @@ import AppNotification from './components/AppNotification.vue'
 		<div class="container">
 			<AppFrame />
 			<AppInventory />
-			<AppNotification class="notification" />
+			<AppNotification
+				v-if="notificationStore.isNotificationVisible"
+				class="notification"
+			/>
 		</div>
 	</main>
 </template>
