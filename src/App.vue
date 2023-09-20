@@ -1,12 +1,14 @@
 <script setup lang="ts">
 import AppFrame from './components/AppFrame.vue'
+import AppInventory from './components/AppInventory.vue'
 import AppNotification from './components/AppNotification.vue'
 </script>
 
 <template>
 	<main>
 		<div class="container">
-			<AppFrame class="frame" />
+			<AppFrame />
+			<AppInventory />
 			<AppNotification class="notification" />
 		</div>
 	</main>
@@ -20,10 +22,6 @@ import AppNotification from './components/AppNotification.vue'
 	grid-template-columns: 14.75rem 32.8125rem;
 	grid-template-rows: 31.25rem 4.5rem;
 	gap: 1.5rem;
-}
-
-.frame {
-	width: 100%;
 }
 
 .notification {
