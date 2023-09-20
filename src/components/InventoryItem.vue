@@ -28,6 +28,7 @@ const itemStore = useItemStore()
 
 		<button
 			class="inventory-item__button button button_danger"
+			v-show="itemStore.chosenItem?.amount"
 			@click="itemStore.isGoingToRemove = true"
 		>
 			Удалить предмет
